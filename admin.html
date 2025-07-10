@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Certificate</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #fafafa; }
+    form { margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <h2>Upload New Certificate</h2>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="certificate" required />
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    const secret = prompt("Enter secret password:");
+    if (secret !== "MY_SECRET") {
+      alert("Unauthorized");
+      window.location.href = "/";
+    }
+
+    const form = document.getElementById("uploadForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const res = await fetch("https://certificate-api-trqq.onrender.com", {
+        method: "POST",
+        body: formData,
+      });
+      if (res.ok) {
+        alert("Certificate uploaded successfully!");
+      } else {
+        alert("Upload failed");
+      }
+    });
+  </script>
+</body>
+</html>
