@@ -2,109 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Admin Upload Portal</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 2rem;
-      background: #fafafa;
-      max-width: 420px;
-      margin: 2rem auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #333;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    input[type="file"],
-    select {
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      background-color: #e9615e;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload Certificate</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>Upload File</h2>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <select name="uploadType" id="uploadType" required>
-      <option value="certificate">Certificate</option>
-      <option value="publication">Publication</option>
-    </select>
-    <input type="file" name="file" required />
-    <button type="submit" disabled>Upload</button>
-  </form>
+  <nav>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="admin.html">Upload Certificate</a></li>
+    </ul>
+  </nav>
+
+  <section class="section__container" style="max-width: 400px; margin: 2rem auto;">
+    <h2 class="section__header" style="text-align: center;">Upload New Certificate</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" name="certificate" required />
+      <button type="submit" class="btn" style="margin-top: 1rem; width: 100%;">Upload</button>
+    </form>
+  </section>
 
   <script>
-    // Admin Password Prompt
-    const secret = prompt("Enter admin password:");
-    if (!secret || secret.toLowerCase() !== "my_secret") {
-      alert("Unauthorized");
-      window.location.href = "index.html";
-    }
-
     const form = document.getElementById("uploadForm");
-    const fileInput = form.querySelector('input[type="file"]');
-    const submitBtn = form.querySelector('button');
-    const uploadType = document.getElementById("uploadType");
-
-    // Enable button only if file selected
-    fileInput.addEventListener("change", () => {
-      submitBtn.disabled = !fileInput.value;
-    });
-
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      submitBtn.disabled = true;
 
-      const formData = new FormData();
-      formData.append("file", fileInput.files[0]);
-      const selectedType = uploadType.value;
-
-      // API URL based on selected upload type
-      const apiURL =
-        selectedType === "certificate"
-          ? "https://certificate-api-trqq.onrender.com/upload"
-          : "https://certificate-api-trqq.onrender.com/upload-publication";
+      const formData = new FormData(form);
 
       try {
-        const res = await fetch(apiURL, {
+        const res = await fetch("https://certificate-api-trqq.onrender.com/upload", {
           method: "POST",
           body: formData,
         });
 
         if (res.ok) {
-          alert(`${selectedType.charAt(0).toUpperCase() + selectedType.slice(1)} uploaded successfully!`);
+          alert("Certificate uploaded successfully!");
           form.reset();
-          submitBtn.disabled = true;
         } else {
-          const errorText = await res.text();
-          alert("Upload failed: " + errorText);
-          submitBtn.disabled = false;
+          alert("Upload failed. Please try again.");
         }
-      } catch (error) {
-        alert("Upload error: " + error.message);
-        submitBtn.disabled = false;
+      } catch (err) {
+        alert("Upload failed. Please try again.");
+        console.error(err);
       }
     });
   </script>
