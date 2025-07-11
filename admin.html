@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Upload Certificate</title>
   <style>
-    body { font-family: sans-serif; padding: 2rem; background: #fafafa; }
-    form { margin-top: 2rem; }
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #fafafa;
+    }
+    form {
+      margin-top: 2rem;
+    }
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -16,25 +26,33 @@
   </form>
 
   <script>
-    const secret = prompt("Enter secret password:");
-    if (secret !== "MY_SECRET") {
+    const secret = prompt("Enter admin password:");
+    if (!secret || secret.toLowerCase() !== "my_secret") {
       alert("Unauthorized");
-      window.location.href = "/";
+      window.location.href = "index.html";
     }
 
     const form = document.getElementById("uploadForm");
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const res = await fetch("https://certificate-api-trqq.onrender.com/upload", {
-  method: "POST",
-  body: formData,
-});
 
-      if (res.ok) {
-        alert("Certificate uploaded successfully!");
-      } else {
-        alert("Upload failed");
+      try {
+        const res = await fetch("https://certificate-api-trqq.onrender.com/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (res.ok) {
+          alert("Certificate uploaded successfully!");
+          form.reset();
+          form.querySelector("button").disabled = true;
+        } else {
+          const errorText = await res.text();
+          alert("Upload failed: " + errorText);
+        }
+      } catch (error) {
+        alert("Upload error: " + error.message);
       }
     });
   </script>
