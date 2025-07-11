@@ -24,7 +24,7 @@
       <li><a href="#research">Research</a></li>
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="admin.html" class="btn">Upload Certificate</a></li>
+      <li><a href="admin.html" class="btn">Upload File</a></li>
       <li><a href="#contact" class="btn">Contact</a></li>
     </ul>
   </nav>
@@ -84,7 +84,7 @@
       A collection of my professional certifications, showcasing commitment to continuous learning.
     </p>
     <div class="portfolio__grid" id="certificate-grid">
-      <!-- Certificates will be loaded here -->
+      <!-- Certificates will be loaded here dynamically -->
     </div>
   </section>
 
@@ -93,22 +93,8 @@
     <p class="section__description">
       Here are some key contributions to the scientific community.
     </p>
-    <div class="portfolio__grid">
-      <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_1" target="_blank">
-          <img src="assets/publication1.png" alt="Publication 1" />
-        </a>
-      </div>
-      <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_2" target="_blank">
-          <img src="assets/publication2.png" alt="Publication 2" />
-        </a>
-      </div>
-      <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_3" target="_blank">
-          <img src="assets/publication3.png" alt="Publication 3" />
-        </a>
-      </div>
+    <div class="portfolio__grid" id="publication-grid">
+      <!-- Publications will be loaded here dynamically -->
     </div>
   </section>
 
@@ -128,7 +114,6 @@
   </section>
 
   <script>
-    // Mobile menu toggle script
     document.addEventListener("DOMContentLoaded", () => {
       const menuBtn = document.getElementById("menu-btn");
       const navLinks = document.getElementById("nav-links");
@@ -172,7 +157,35 @@
         }
       }
 
+      // Load publications
+      async function loadPublications() {
+        try {
+          const res = await fetch("https://certificate-api-trqq.onrender.com/publications");
+          if (!res.ok) throw new Error("Failed to load publications");
+          const files = await res.json();
+          const container = document.getElementById("publication-grid");
+          container.innerHTML = files
+            .map(
+              file => `
+              <div class="portfolio__card publication__card">
+                <a href="https://certificate-api-trqq.onrender.com/publications/${file}" target="_blank">
+                  <img src="https://certificate-api-trqq.onrender.com/publications/${file}" alt="${file}" />
+                  <div class="publication__details">
+                    <h4>${file}</h4>
+                    <p>Uploaded Publication</p>
+                  </div>
+                </a>
+              </div>
+            `
+            )
+            .join("");
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
       loadCertificates();
+      loadPublications();
 
       // Scroll Reveal Animations
       const scrollRevealOption = {
