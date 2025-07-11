@@ -128,36 +128,72 @@
   </section>
 
   <script>
-    async function loadCertificates() {
-      try {
-        const res = await fetch("https://certificate-api-trqq.onrender.com/certificates");
-        if (!res.ok) throw new Error("Failed to load certificates");
-        const files = await res.json();
-        const container = document.getElementById("certificate-grid");
-        container.innerHTML = files
-          .map(
-            file => `
-            <div class="portfolio__card certificate__card">
-              <a href="https://certificate-api-trqq.onrender.com/${file}" target="_blank">
-                <img src="https://certificate-api-trqq.onrender.com/${file}" alt="${file}" />
-                <div class="certificate__details">
-                  <h4>${file}</h4>
-                  <p>Uploaded Certificate</p>
-                </div>
-              </a>
-            </div>
-          `
-          )
-          .join("");
-      } catch (error) {
-        console.error(error);
+    // Mobile menu toggle script
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("menu-btn");
+      const navLinks = document.getElementById("nav-links");
+      const menuBtnIcon = menuBtn.querySelector("i");
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+        const isOpen = navLinks.classList.contains("open");
+        menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
+      });
+
+      navLinks.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtnIcon.setAttribute("class", "ri-menu-3-line");
+      });
+
+      // Load certificates
+      async function loadCertificates() {
+        try {
+          const res = await fetch("https://certificate-api-trqq.onrender.com/certificates");
+          if (!res.ok) throw new Error("Failed to load certificates");
+          const files = await res.json();
+          const container = document.getElementById("certificate-grid");
+          container.innerHTML = files
+            .map(
+              file => `
+              <div class="portfolio__card certificate__card">
+                <a href="https://certificate-api-trqq.onrender.com/${file}" target="_blank">
+                  <img src="https://certificate-api-trqq.onrender.com/${file}" alt="${file}" />
+                  <div class="certificate__details">
+                    <h4>${file}</h4>
+                    <p>Uploaded Certificate</p>
+                  </div>
+                </a>
+              </div>
+            `
+            )
+            .join("");
+        } catch (error) {
+          console.error(error);
+        }
       }
-    }
 
-    loadCertificates();
+      loadCertificates();
+
+      // Scroll Reveal Animations
+      const scrollRevealOption = {
+        distance: "50px",
+        origin: "bottom",
+        duration: 1000,
+      };
+
+      ScrollReveal().reveal(".header__content h2", { ...scrollRevealOption });
+      ScrollReveal().reveal(".header__content .section__description", { ...scrollRevealOption, delay: 500 });
+      ScrollReveal().reveal(".header__content .header__btn", { ...scrollRevealOption, delay: 1000 });
+
+      ScrollReveal().reveal(".about__content .section__header", { ...scrollRevealOption });
+      ScrollReveal().reveal(".about__content .section__description", { ...scrollRevealOption, delay: 500 });
+      ScrollReveal().reveal(".about__content .about__btn", { ...scrollRevealOption, delay: 1000 });
+
+      ScrollReveal().reveal(".service__card", { ...scrollRevealOption, interval: 500 });
+
+      ScrollReveal().reveal(".portfolio__card", { duration: 1000, interval: 500 });
+    });
   </script>
-
   <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="main.js"></script>
 </body>
 </html>
