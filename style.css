@@ -6,7 +6,11 @@
   --extra-light: #f3f4f6;
   --white: #ffffff;
   --gradient-1: linear-gradient(to bottom right, #62393c, #181e41);
-  --gradient-2: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  --gradient-2: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   --max-width: 1200px;
 }
 
@@ -27,7 +31,6 @@
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  color: var(--white);
 }
 
 .section__description {
@@ -44,6 +47,7 @@
   font-weight: 500;
   color: var(--white);
   background-image: var(--gradient-2);
+  outline: none;
   border: none;
   border-radius: 5rem;
   cursor: pointer;
@@ -52,8 +56,7 @@
 
 img {
   width: 100%;
-  display: block;
-  border-radius: 1rem;
+  display: flex;
 }
 
 a {
@@ -74,6 +77,9 @@ a {
 html,
 body {
   scroll-behavior: smooth;
+}
+
+body {
   font-family: "Montserrat", sans-serif;
   color: var(--white);
   background-image: var(--gradient-1);
@@ -81,12 +87,12 @@ body {
 
 nav {
   position: fixed;
+  isolation: isolate;
   top: 0;
   width: 100%;
   max-width: var(--max-width);
   margin: auto;
-  background-image: var(--gradient-1);
-  z-index: 9999;
+  z-index: 9;
 }
 
 .nav__bar {
@@ -94,6 +100,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
+  background-image: var(--gradient-1);
 }
 
 .nav__logo {
@@ -111,15 +119,25 @@ nav {
   font-size: 1.5rem;
   color: var(--white);
   cursor: pointer;
-  display: none; /* hide on desktop */
 }
 
 .nav__links {
   list-style: none;
+  position: absolute;
+  width: 100%;
+  padding: 2rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   align-items: center;
-  padding: 0 1rem;
+  gap: 2rem;
+  background-image: var(--gradient-2);
+  transform: translateY(-100%);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.nav__links.open {
+  transform: translateY(0);
 }
 
 .nav__links a {
@@ -128,65 +146,62 @@ nav {
 }
 
 .nav__links a:hover {
-  color: var(--secondary-color);
+  color: var(--white);
 }
 
-/* Responsive nav toggle */
-@media (max-width: 768px) {
-  .nav__menu__btn {
-    display: block;
-  }
-  .nav__links {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background-image: var(--gradient-2);
-    transform: translateY(-100%);
-    transition: 0.5s;
-    z-index: -1;
-    padding: 2rem 0;
-  }
-  .nav__links.open {
-    transform: translateY(0);
-    z-index: 100;
-  }
-  .nav__links a {
-    font-size: 1.2rem;
-  }
+.btn__large {
+  display: none;
+}
+
+.btn__small {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
 }
 
 .header__container {
   padding-top: 8rem;
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  isolation: isolate;
+}
+
+.header__content {
   text-align: center;
 }
 
-.header__image img {
-  max-width: 400px;
-  margin: auto;
-  border-radius: 25rem;
+.header__content h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 1.2;
 }
 
-.header__content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.header__content .section__description {
+  margin-bottom: 2rem;
+}
+
+.header__image {
+  position: relative;
+  isolation: isolate;
+  z-index: -1;
+}
+
+.header__image img {
+  max-width: 450px;
+  margin-inline: auto;
+  border-radius: 25rem;
 }
 
 .about__container {
   display: grid;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  text-align: center;
 }
 
 .about__image {
-  max-width: 300px;
+  position: relative;
+  isolation: isolate;
+  max-width: 400px;
   margin: auto;
 }
 
@@ -194,90 +209,80 @@ nav {
   border-radius: 100%;
 }
 
+.about__content {
+  text-align: center;
+}
+
+.about__content .section__description {
+  margin-bottom: 2rem;
+}
+
 .service__grid {
+  margin-top: 2rem;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin-top: 2rem;
 }
 
 .service__card {
   padding: 2rem 1rem;
+  text-align: center;
   background-image: var(--gradient-2);
   border-radius: 1rem;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
 }
 
 .service__card span {
-  font-size: 2rem;
-  margin-bottom: 1rem;
   display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
 .service__card h4 {
   margin-bottom: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .service__card p {
   color: var(--extra-light);
-  line-height: 1.5rem;
+  line-height: 2rem;
 }
 
 .portfolio__grid {
+  margin-top: 2rem;
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-top: 2rem;
 }
 
 .portfolio__card {
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.portfolio__card:hover {
-  transform: scale(1.05);
 }
 
 .portfolio__card img {
-  width: 100%;
-  display: block;
-  transition: transform 0.5s;
+  transition: 0.5s;
 }
 
 .portfolio__card:hover img {
   transform: scale(1.1);
 }
 
-.certificate__details {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1.5rem 1rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-  color: var(--white);
-}
-
-.certificate__details h4 {
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
 .contact__container {
   text-align: center;
+}
+
+.contact__container .logo {
+  margin-bottom: 1rem;
 }
 
 .contact__socials {
   margin-top: 2rem;
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .contact__socials a {
@@ -286,25 +291,4 @@ nav {
   color: var(--white);
   background: rgba(255, 255, 255, 0.2);
   border-radius: 100%;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-  transition: 0.3s;
-}
-
-.contact__socials a:hover {
-  background: var(--gradient-2);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Button styles */
-.btn {
-  cursor: pointer;
-}
-
-/* Media queries */
-@media (max-width: 768px) {
-  .header__container,
-  .about__container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
+  box-shadow: 5px 5px 10px rgba(0, 

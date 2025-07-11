@@ -4,16 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dr. Evelyn Reed | Research Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
   <link
     href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
     <div class="nav__bar">
-      <a href="#"><span class="logo nav__logo">E</span> Dr. Evelyn Reed</a>
+      <a href="index.html"><span class="logo nav__logo">E</span> Dr. Evelyn Reed</a>
       <div class="nav__menu__btn" id="menu-btn">
         <i class="ri-menu-3-line"></i>
       </div>
@@ -24,36 +24,40 @@
       <li><a href="#research">Research</a></li>
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="admin.html" class="btn">Upload Certificate</a></li>
       <li><a href="#contact" class="btn">Contact</a></li>
+      <li><a href="admin.html" class="btn btn__small">Admin Upload</a></li>
     </ul>
   </nav>
 
   <header class="section__container header__container" id="home">
     <div class="header__image">
-      <img src="assets/pic1.jpg" alt="Dr. Evelyn Reed" />
+      <img src="assets/pic1.jpg" alt="header" />
     </div>
     <div class="header__content">
-      <h2>Dr. Evelyn Reed<br />Scientist & Researcher</h2>
+      <h2>Dr. Evelyn Reed<br /> Scientist & Researcher</h2>
       <p class="section__description">
-        Welcome! I am a dedicated researcher focused on understanding and mitigating the impacts of climate change on marine ecosystems.
+        Welcome! I am a dedicated researcher focused on understanding and mitigating the impacts of climate change on marine ecosystems. Through field research, data analysis, and modeling, I strive to produce insights that inform conservation policy and practice.
       </p>
-      <button class="btn">Collaborate With Me<br />e.reed.research@university.edu</button>
+      <div class="header__btn">
+        <button class="btn">Collaborate With Me<br />e.reed.research@university.edu</button>
+      </div>
     </div>
   </header>
 
   <section class="section__container about__container" id="about">
     <div class="about__image">
-      <img src="assets/pic2.avif" alt="About Dr. Reed" class="about__img" />
+      <img src="assets/pic2.avif" alt="about" class="about__img" />
     </div>
     <div class="about__content">
       <h2 class="section__header">My Research Journey</h2>
       <p class="section__description">
-        My passion for the natural world began during my undergraduate studies and culminated in a Ph.D. where I investigated coral reef resilience.
+        My passion for the natural world began during my undergraduate studies and culminated in a Ph.D. where I investigated coral reef resilience. Today, as a post-doctoral fellow, I continue to explore complex environmental questions. I believe in collaborative, open science and am always keen to connect with fellow researchers, policymakers, and conservationists to work towards a sustainable future.
       </p>
-      <a href="assets/EvelynReed_CV.pdf" download>
-        <button class="btn">Download CV</button>
-      </a>
+      <div class="about__btn">
+        <a href="assets/EvelynReed_CV.pdf" download>
+          <button class="btn">Download CV</button>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -63,17 +67,17 @@
       <div class="service__card">
         <span><i class="ri-line-chart-line"></i></span>
         <h4>Climate Change Modeling</h4>
-        <p>Developing predictive models to forecast ecosystem responses.</p>
+        <p>Developing and applying predictive models to forecast ecosystem responses to changing climate variables and oceanic conditions.</p>
       </div>
       <div class="service__card">
         <span><i class="ri-seedling-line"></i></span>
         <h4>Marine Biodiversity</h4>
-        <p>Field surveys and genetic analyses to assess biodiversity.</p>
+        <p>Conducting field surveys and genetic analyses to assess biodiversity patterns and the functional roles of key marine species.</p>
       </div>
       <div class="service__card">
         <span><i class="ri-government-line"></i></span>
         <h4>Conservation Policy</h4>
-        <p>Translating scientific findings into policy recommendations.</p>
+        <p>Translating complex scientific findings into actionable policy recommendations for governmental and non-profit organizations.</p>
       </div>
     </div>
   </section>
@@ -81,33 +85,27 @@
   <section class="section__container portfolio__container" id="certificates">
     <h2 class="section__header">Licenses & Certificates</h2>
     <p class="section__description">
-      A collection of my professional certifications, showcasing commitment to continuous learning.
+      A collection of my professional certifications, showcasing a commitment to continuous learning and skill development in key areas of research and data science.
     </p>
-    <div class="portfolio__grid" id="certificate-grid">
-      <!-- Certificates will be loaded here -->
+    <div class="portfolio__grid" id="certificateGrid">
+      <!-- Dynamically loaded certificates will appear here -->
     </div>
   </section>
 
   <section class="section__container portfolio__container" id="publications">
     <h2 class="section__header">Selected Publications</h2>
     <p class="section__description">
-      Here are some key contributions to the scientific community.
+      Here are some of my key contributions to the scientific community. Each project represents a deep dive into critical environmental questions and a collaborative effort with esteemed colleagues.
     </p>
     <div class="portfolio__grid">
       <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_1" target="_blank">
-          <img src="assets/publication1.png" alt="Publication 1" />
-        </a>
+        <a href="https://doi.org/YOUR_DOI_HERE_1" target="_blank"><img src="assets/publication1.png" alt="publication 1" /></a>
       </div>
       <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_2" target="_blank">
-          <img src="assets/publication2.png" alt="Publication 2" />
-        </a>
+        <a href="https://doi.org/YOUR_DOI_HERE_2" target="_blank"><img src="assets/publication2.png" alt="publication 2" /></a>
       </div>
       <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_3" target="_blank">
-          <img src="assets/publication3.png" alt="Publication 3" />
-        </a>
+        <a href="https://doi.org/YOUR_DOI_HERE_3" target="_blank"><img src="assets/publication3.png" alt="publication 3" /></a>
       </div>
     </div>
   </section>
@@ -116,7 +114,7 @@
     <div class="logo">E</div>
     <h2 class="section__header">Let's Connect!</h2>
     <p class="section__description">
-      I am always open to discussing research and collaborative opportunities.
+      I am always open to discussing research, exploring collaborative opportunities, and speaking at events. Feel free to reach out.
     </p>
     <div class="contact__socials">
       <a href="#" target="_blank" title="LinkedIn"><i class="ri-linkedin-fill"></i></a>
@@ -131,26 +129,31 @@
     async function loadCertificates() {
       try {
         const res = await fetch("https://certificate-api-trqq.onrender.com/certificates");
-        if (!res.ok) throw new Error("Failed to load certificates");
+        if (!res.ok) throw new Error("Failed to fetch certificates");
         const files = await res.json();
-        const container = document.getElementById("certificate-grid");
+        const container = document.getElementById("certificateGrid");
+        if(files.length === 0) {
+          container.innerHTML = "<p>No certificates uploaded yet.</p>";
+          return;
+        }
         container.innerHTML = files
           .map(
-            file => `
-            <div class="portfolio__card certificate__card">
-              <a href="https://certificate-api-trqq.onrender.com/${file}" target="_blank">
-                <img src="https://certificate-api-trqq.onrender.com/${file}" alt="${file}" />
-                <div class="certificate__details">
-                  <h4>${file}</h4>
-                  <p>Uploaded Certificate</p>
-                </div>
-              </a>
-            </div>
-          `
+            (file) => `
+          <div class="portfolio__card certificate__card">
+            <a href="https://certificate-api-trqq.onrender.com/${file}" target="_blank">
+              <img src="https://certificate-api-trqq.onrender.com/${file}" alt="${file}">
+              <div class="certificate__details">
+                <h4>${file}</h4>
+                <p>Uploaded Certificate</p>
+              </div>
+            </a>
+          </div>
+        `
           )
           .join("");
-      } catch (error) {
-        console.error(error);
+      } catch (err) {
+        console.error(err);
+        document.getElementById("certificateGrid").innerHTML = "<p>Failed to load certificates.</p>";
       }
     }
 
