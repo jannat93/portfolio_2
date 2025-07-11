@@ -26,6 +26,13 @@ const scrollRevealOption = {
   origin: "bottom",
   duration: 1000,
 };
+const fileInput = form.querySelector('input[type="file"]');
+const submitBtn = form.querySelector('button');
+
+fileInput.addEventListener('change', () => {
+  submitBtn.disabled = !fileInput.value;
+});
+
 
 // Header container
 // Note: I changed the original "h1" selector to "h2" to match the new researcher HTML.
