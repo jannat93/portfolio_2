@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<h lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload Publication Link</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input[type="text"],
+    input[type="url"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #e9615e;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h2>Submit Publication Link</h2>
+  <form id="publicationLinkForm">
+    <input type="text" name="title" placeholder="Publication Title" required />
+    <input type="url" name="url" placeholder="Publication URL" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("publicationLinkForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const title = form.title.value.trim();
+      const url = form.url.value.trim();
+
+      if (!title || !url) {
+        alert("Please fill in both fields");
+        return;
+      }
+
+      try {
+        const res = await fetch("https://certificate-api-trqq.onrender.com/publications", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title, url }),
+        });
+
+        if (res.ok) {
+          alert("Publication link submitted successfully!");
+          form.reset();
+        } else {
+          const err = await res.json();
+          alert("Error: " + (err.error || "Failed to submit"));
+        }
+      } catch (error) {
+        alert("Error: " + error.message);
+      }
+    });
+  </script>
+</body>
+</h
