@@ -26,10 +26,11 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const res = await fetch("https://certificate-api-trqq.onrender.com", {
-        method: "POST",
-        body: formData,
-      });
+      const res = await fetch("https://certificate-api-trqq.onrender.com/upload", {
+  method: "POST",
+  body: formData,
+});
+
       if (res.ok) {
         alert("Certificate uploaded successfully!");
       } else {
