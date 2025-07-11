@@ -24,7 +24,7 @@
       <li><a href="#research">Research</a></li>
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="admin.html" class="btn">Upload File</a></li>
+      <li><a href="admin.html" class="btn">Upload Certificate</a></li>
       <li><a href="#contact" class="btn">Contact</a></li>
     </ul>
   </nav>
@@ -84,7 +84,7 @@
       A collection of my professional certifications, showcasing commitment to continuous learning.
     </p>
     <div class="portfolio__grid" id="certificate-grid">
-      <!-- Certificates will be loaded here dynamically -->
+      <!-- Certificates will be loaded here -->
     </div>
   </section>
 
@@ -93,25 +93,23 @@
     <p class="section__description">
       Here are some key contributions to the scientific community.
     </p>
-    <div class="portfolio__grid" id="publication-grid">
-      <!-- Publications will be loaded here dynamically -->
+    <div class="portfolio__grid">
+      <div class="portfolio__card">
+        <a href="https://doi.org/YOUR_DOI_HERE_1" target="_blank">
+          <img src="assets/publication1.png" alt="Publication 1" />
+        </a>
+      </div>
+      <div class="portfolio__card">
+        <a href="https://doi.org/YOUR_DOI_HERE_2" target="_blank">
+          <img src="assets/publication2.png" alt="Publication 2" />
+        </a>
+      </div>
+      <div class="portfolio__card">
+        <a href="https://doi.org/YOUR_DOI_HERE_3" target="_blank">
+          <img src="assets/publication3.png" alt="Publication 3" />
+        </a>
+      </div>
     </div>
-
-    <!-- Upload form for new publications -->
-    <section class="section__container upload__container" id="upload-publication" style="margin-top: 2rem;">
-      <h3>Upload New Publication</h3>
-      <form id="uploadForm">
-        <input
-          type="file"
-          id="publicationFile"
-          name="publicationFile"
-          accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
-          required
-        />
-        <button type="submit" class="btn" style="margin-top: 0.5rem;">Upload Publication</button>
-      </form>
-      <p id="uploadStatus" style="margin-top: 0.5rem; color: green;"></p>
-    </section>
   </section>
 
   <section class="section__container contact__container" id="contact">
@@ -129,8 +127,8 @@
     </div>
   </section>
 
-  <script src="https://unpkg.com/scrollreveal"></script>
   <script>
+    // Mobile menu toggle script
     document.addEventListener("DOMContentLoaded", () => {
       const menuBtn = document.getElementById("menu-btn");
       const navLinks = document.getElementById("nav-links");
@@ -147,7 +145,7 @@
         menuBtnIcon.setAttribute("class", "ri-menu-3-line");
       });
 
-      // Load certificates dynamically
+      // Load certificates
       async function loadCertificates() {
         try {
           const res = await fetch("https://certificate-api-trqq.onrender.com/certificates");
@@ -174,74 +172,7 @@
         }
       }
 
-      // Load publications dynamically
-      async function loadPublications() {
-        try {
-          const res = await fetch("https://certificate-api-trqq.onrender.com/publications");
-          if (!res.ok) throw new Error("Failed to load publications");
-          const files = await res.json();
-          const container = document.getElementById("publication-grid");
-          container.innerHTML = files
-            .map(
-              file => `
-              <div class="portfolio__card publication__card">
-                <a href="https://certificate-api-trqq.onrender.com/publications/${file}" target="_blank">
-                  <img src="https://certificate-api-trqq.onrender.com/publications/${file}" alt="${file}" />
-                  <div class="publication__details">
-                    <h4>${file}</h4>
-                    <p>Uploaded Publication</p>
-                  </div>
-                </a>
-              </div>
-            `
-            )
-            .join("");
-        } catch (error) {
-          console.error(error);
-        }
-      }
-
       loadCertificates();
-      loadPublications();
-
-      // Upload new publication
-      const uploadForm = document.getElementById("uploadForm");
-      const uploadStatus = document.getElementById("uploadStatus");
-
-      uploadForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        uploadStatus.style.color = "green";
-        uploadStatus.textContent = "Uploading...";
-        const fileInput = document.getElementById("publicationFile");
-        const file = fileInput.files[0];
-        if (!file) {
-          uploadStatus.style.color = "red";
-          uploadStatus.textContent = "Please select a file.";
-          return;
-        }
-
-        const formData = new FormData();
-        formData.append("publicationFile", file);
-
-        try {
-          const res = await fetch("https://certificate-api-trqq.onrender.com/upload-publication", {
-            method: "POST",
-            body: formData,
-          });
-
-          if (!res.ok) throw new Error("Upload failed");
-
-          uploadStatus.textContent = "Upload successful! Reloading publications...";
-          fileInput.value = ""; // reset file input
-          await loadPublications();
-          setTimeout(() => {
-            uploadStatus.textContent = "";
-          }, 3000);
-        } catch (error) {
-          uploadStatus.style.color = "red";
-          uploadStatus.textContent = "Error uploading file: " + error.message;
-        }
-      });
 
       // Scroll Reveal Animations
       const scrollRevealOption = {
@@ -263,5 +194,6 @@
       ScrollReveal().reveal(".portfolio__card", { duration: 1000, interval: 500 });
     });
   </script>
+  <script src="https://unpkg.com/scrollreveal"></script>
 </body>
 </html>
