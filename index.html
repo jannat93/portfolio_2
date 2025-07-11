@@ -1,199 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dr. Evelyn Reed | Research Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
-</head>
-<body>
-  <nav>
-    <div class="nav__bar">
-      <a href="#"><span class="logo nav__logo">E</span> Dr. Evelyn Reed</a>
-      <div class="nav__menu__btn" id="menu-btn">
-        <i class="ri-menu-3-line"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts: Montserrat for body, Poppins for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- RemixIcon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Arfanul Islam Rafi | Research Portfolio</title>
+  </head>
+ <body>
+    <nav>
+      <div class="nav__bar">
+        <a href="#" class="nav__logo-link"><img src="assets/icon.svg" alt="AR icon" width="60" height="60" />
+ Arfanul</a>
+        <div class="nav__menu__btn" id="menu-btn">
+          <i class="ri-menu-3-line"></i>
+        </div>
       </div>
-    </div>
-    <ul class="nav__links" id="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#publications">Publications</a></li>
-      <li><a href="admin.html" class="btn">Upload Certificate</a></li>
-      <li><a href="#contact" class="btn">Contact</a></li>
-    </ul>
-  </nav>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li> 
+        <li><a href="#research">Research</a></li>
+        <li><a href="#upcoming-research">Research Pipeline</a></li>
+        <li><a href="#competitions">Awards</a></li>
+        <li><a href="#activities">Engagement</a></li>
+        <li><a href="#contact" class="btn">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn__large">Contact</a>
+    </nav>
+    <header class="section__container header__container" id="home">
+      <div class="header__image">
+        <!-- Make sure to replace this with Rafi's picture -->
+        <img src="assets/" alt="Arfanul Islam Rafi" /> 
+      </div>
+      <div class="header__content">
+        <h1>
+          <span>Arfanul Islam Rafi</span><br />AI & HCI Researcher
+        </h1>
+        <p class="section__description">
+          A passionate researcher dedicated to exploring the intersection of artificial intelligence and human-computer interaction. My work aims to build intelligent systems that are not only effective but also transparent, ethical, and aligned with human values.
+        </p>
+        <div class="header__btn">
+          <a href="#contact"><button class="btn">Get In Touch</button></a>
+        </div>
+      </div>
+    </header>
 
-  <header class="section__container header__container" id="home">
-    <div class="header__image">
-      <img src="assets/pic1.jpg" alt="Dr. Evelyn Reed" />
-    </div>
-    <div class="header__content">
-      <h2>Dr. Evelyn Reed<br />Scientist & Researcher</h2>
+    <section class="section__container about__container" id="about">
+      <div class="about__image">
+        <img src="assets/" alt="about" class="about__img" />
+      </div>
+      <div class="about__content">
+        <h2 class="section__header">About Me</h2>
+        <p class="section__description">
+          My academic journey is fueled by a profound curiosity for how technology shapes human experience. I focus on developing novel algorithms and user-centric methodologies to solve complex problems, with the ultimate goal of contributing to a future where technology empowers everyone.
+        </p>
+        <div class="about__btn">
+          <!-- Update the path to the new CV file -->
+          <a href="assets/CV.pdf" download> 
+            <button class="btn">Download CV</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container experience__container" id="experience">
+      <h2 class="section__header">Research Experience</h2>
       <p class="section__description">
-        Welcome! I am a dedicated researcher focused on understanding and mitigating the impacts of climate change on marine ecosystems.
+        A timeline of my key research roles and contributions within academic and industrial labs.
       </p>
-      <button class="btn">Collaborate With Me<br />e.reed.research@university.edu</button>
-    </div>
-  </header>
+      <div class="experience__timeline">
+        <!-- Timeline Item 1 -->
+        <div class="experience__item">
+          <div class="experience__item__header">
+            <h3>Graduate Research Assistant</h3>
+            <span>Aug 2022 - Present</span>
+          </div>
+          <h4>Interactive AI Lab | Example University</h4>
+          <ul>
+            <li>Investigated methods for generating real-time explanations for deep learning model predictions.</li>
+            <li>Designed and conducted user studies to evaluate the effectiveness of different explanation interfaces.</li>
+            <li>Co-authored a paper which is currently in preparation for submission.</li>
+          </ul>
+        </div>
+        
+        <div class="experience__item">
+          <div class="experience__item__header">
+            <h3>Data Science Research Intern</h3>
+            <span>May 2021 - Aug 2021</span>
+          </div>
+          <h4>Future-Forward Tech | Remote</h4>
+          <ul>
+            <li>Analyzed user behavior datasets to identify patterns for improving recommendation systems.</li>
+            <li>Developed a prototype of a sentiment analysis tool with 92% accuracy on internal benchmarks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section__container service__container" id="research">
+      <h2 class="section__header">Core Research Interests</h2>
+      <div class="service__grid">
+        <div class="service__card">
+          <span><i class="ri-robot-2-line"></i></span>
+          <h4>Explainable AI (XAI)</h4>
+          <p>
+            Developing algorithms that make "black-box" models transparent and understandable to human users.
+          </p>
+        </div>
+        <div class="service__card">
+          <span><i class="ri-user-voice-line"></i></span>
+          <h4>Human-Computer Interaction</h4>
+          <p>
+            Studying and designing the way people interact with technology to create more intuitive and effective user experiences.
+          </p>
+        </div>
+        <div class="service__card">
+          <span><i class="ri-bar-chart-box-line"></i></span>
+          <h4>Data-Driven Modeling</h4>
+          <p>
+            Utilizing statistical methods and machine learning to build predictive models from complex datasets.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section__container research-pipeline__container" id="upcoming-research">
+        <h2 class="section__header">Upcoming & In-Progress Research</h2>
+        <p class="section__description">
+            This section highlights my active research pipeline, including manuscripts in preparation and ongoing experimental work that will lead to future publications.
+        </p>
+        <div class="research-pipeline">
+            
+            <div class="pipeline-item">
+                <div class="pipeline-item__header">
+                    <h4>The Role of Interactivity in XAI Systems for Novice Users</h4>
+                    <span class="pipeline-item__status">Manuscript in Preparation</span>
+                </div>
+                <p>
+                    This paper investigates how varying levels of user interaction with an AI's explanation can impact trust and understanding. We are targeting a submission to the ACM CHI conference.
+                </p>
+            </div>
+        
+            <div class="pipeline-item">
+                <div class="pipeline-item__header">
+                    <h4>Bias Detection in Large Language Models</h4>
+                    <span class="pipeline-item__status">Data Analysis Stage</span>
+                </div>
+                <p>
+                    Currently analyzing outputs from several major LLMs to quantify ideological and demographic biases using a novel metric. The next step is to write up the initial findings for a workshop submission.
+                </p>
+            </div>
+            
+            <div class="pipeline-item">
+                <div class="pipeline-item__header">
+                    <h4>Longitudinal Study on AI-Assisted Learning Tools</h4>
+                    <span class="pipeline-item__status">Experiment in Progress</span>
+                </div>
+                <p>
+                    A 6-month study with undergraduate students to measure the long-term effects of using AI tutors on learning outcomes and self-efficacy. Data collection is ongoing.
+                </p>
+            </div>
+        </div>
+    </section>
 
-  <section class="section__container about__container" id="about">
-    <div class="about__image">
-      <img src="assets/pic2.avif" alt="About Dr. Reed" class="about__img" />
-    </div>
-    <div class="about__content">
-      <h2 class="section__header">My Research Journey</h2>
+    <section class="section__container competitions__container" id="competitions">
+      <h2 class="section__header">Competitions & Awards</h2>
       <p class="section__description">
-        My passion for the natural world began during my undergraduate studies and culminated in a Ph.D. where I investigated coral reef resilience.
+        A showcase of my achievements in hackathons, data science challenges, and academic contests that reflect my problem-solving and analytical skills.
       </p>
-      <a href="assets/EvelynReed_CV.pdf" download>
-        <button class="btn">Download CV</button>
-      </a>
-    </div>
-  </section>
-
-  <section class="section__container service__container" id="research">
-    <h2 class="section__header">Core Research Areas</h2>
-    <div class="service__grid">
-      <div class="service__card">
-        <span><i class="ri-line-chart-line"></i></span>
-        <h4>Climate Change Modeling</h4>
-        <p>Developing predictive models to forecast ecosystem responses.</p>
+      <div class="competitions__grid">
+        
+        <div class="competition__card">
+          <span><i class="ri-trophy-line"></i></span>
+          <h4>1st Place Winner</h4>
+          <p class="competition__event">AI for Social Good Hackathon 2023</p>
+          <p class="competition__description">
+            Developed an NLP-powered app to connect volunteers with NGOs. Our solution was selected as the winner by a panel of industry experts.
+          </p>
+        </div>
+        
+        <div class="competition__card">
+          <span><i class="ri-line-chart-line"></i></span>
+          <h4>Top 5% Finisher</h4>
+          <p class="competition__event">Kaggle | Predictive Modeling Challenge</p>
+          <p class="competition__description">
+            Achieved a top-tier ranking among 2,000+ teams by engineering novel features and using an ensemble of ML models.
+          </p>
+        </div>
+        
+        <div class="competition__card">
+          <span><i class="ri-award-line"></i></span>
+          <h4>Best Poster Award</h4>
+          <p class="competition__event">Annual Graduate Research Symposium</p>
+          <p class="competition__description">
+            Awarded for the clear and compelling visual presentation of my research on Explainable AI, as voted by faculty members.
+          </p>
+        </div>
       </div>
-      <div class="service__card">
-        <span><i class="ri-seedling-line"></i></span>
-        <h4>Marine Biodiversity</h4>
-        <p>Field surveys and genetic analyses to assess biodiversity.</p>
+    </section>
+
+    <section class="section__container activities__container" id="activities">
+      <h2 class="section__header">Academic Engagement</h2>
+      <p class="section__description">
+        Beyond my core research, I actively engage with the academic community through teaching, reviewing, and volunteering.
+      </p>
+      <div class="activities__grid">
+        <div class="activity__card">
+          <span><i class="ri-file-text-line"></i></span>
+          <h4>Peer Reviewer</h4>
+          <p>
+            Serve as a reviewer for leading conferences and journals in my field, including UIST and CSCW.
+          </p>
+        </div>
+        <div class="activity__card">
+          <span><i class="ri-presentation-line"></i></span>
+          <h4>Graduate Teaching Assistant</h4>
+          <p>
+            TA for "Introduction to Data Science" course, responsible for leading lab sessions and grading assignments.
+          </p>
+        </div>
+        <div class="activity__card">
+          <span><i class="ri-group-line"></i></span>
+          <h4>Conference Volunteer</h4>
+          <p>
+            Volunteered at NeurIPS 2023, assisting with session coordination and providing support to attendees.
+          </p>
+        </div>
       </div>
-      <div class="service__card">
-        <span><i class="ri-government-line"></i></span>
-        <h4>Conservation Policy</h4>
-        <p>Translating scientific findings into policy recommendations.</p>
+    </section>
+
+    <section class="section__container contact__container" id="contact">
+      <div class="logo">A</div>
+      <h2 class="section__header">Let's Connect</h2>
+      <p class="section__description">
+        I am always open to discussing research collaborations, new opportunities, and exciting ideas. Feel free to reach out.
+      </p>
+      <div class="contact__socials">
+        
+        <a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a>
+        <a href="#" target="_blank"><i class="ri-github-fill"></i></a>
+        <a href="#" target="_blank" title="Google Scholar"><i class="ri-graduation-cap-line"></i></a> 
+        <a href="mailto:arfanul.rafi.example@email.com"><i class="ri-mail-line"></i></a>
       </div>
-    </div>
-  </section>
+    </section>
+    
+    <footer class="footer">
+      <p>© 2024 Arfanul Islam Rafi. All rights reserved.</p>
+    </footer>
 
-  <section class="section__container portfolio__container" id="certificates">
-    <h2 class="section__header">Licenses & Certificates</h2>
-    <p class="section__description">
-      A collection of my professional certifications, showcasing commitment to continuous learning.
-    </p>
-    <div class="portfolio__grid" id="certificate-grid">
-      <!-- Certificates will be loaded here -->
-    </div>
-  </section>
-
-  <section class="section__container portfolio__container" id="publications">
-    <h2 class="section__header">Selected Publications</h2>
-    <p class="section__description">
-      Here are some key contributions to the scientific community.
-    </p>
-    <div class="portfolio__grid">
-      <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_1" target="_blank">
-          <img src="assets/publication1.png" alt="Publication 1" />
-        </a>
-      </div>
-      <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_2" target="_blank">
-          <img src="assets/publication2.png" alt="Publication 2" />
-        </a>
-      </div>
-      <div class="portfolio__card">
-        <a href="https://doi.org/YOUR_DOI_HERE_3" target="_blank">
-          <img src="assets/publication3.png" alt="Publication 3" />
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section__container contact__container" id="contact">
-    <div class="logo">E</div>
-    <h2 class="section__header">Let's Connect!</h2>
-    <p class="section__description">
-      I am always open to discussing research and collaborative opportunities.
-    </p>
-    <div class="contact__socials">
-      <a href="#" target="_blank" title="LinkedIn"><i class="ri-linkedin-fill"></i></a>
-      <a href="#" target="_blank" title="GitHub"><i class="ri-github-line"></i></a>
-      <a href="#" target="_blank" title="Google Scholar"><i class="ri-google-fill"></i></a>
-      <a href="#" target="_blank" title="ORCID"><i class="ri-profile-line"></i></a>
-      <a href="mailto:e.reed.research@university.edu" title="Email Me"><i class="ri-mail-line"></i></a>
-    </div>
-  </section>
-
-  <script>
-    // Mobile menu toggle script
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.getElementById("menu-btn");
-      const navLinks = document.getElementById("nav-links");
-      const menuBtnIcon = menuBtn.querySelector("i");
-
-      menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-        const isOpen = navLinks.classList.contains("open");
-        menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-3-line");
-      });
-
-      navLinks.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtnIcon.setAttribute("class", "ri-menu-3-line");
-      });
-
-      // Load certificates
-      async function loadCertificates() {
-        try {
-          const res = await fetch("https://certificate-api-trqq.onrender.com/certificates");
-          if (!res.ok) throw new Error("Failed to load certificates");
-          const files = await res.json();
-          const container = document.getElementById("certificate-grid");
-          container.innerHTML = files
-            .map(
-              file => `
-              <div class="portfolio__card certificate__card">
-                <a href="https://certificate-api-trqq.onrender.com/${file}" target="_blank">
-                  <img src="https://certificate-api-trqq.onrender.com/${file}" alt="${file}" />
-                  <div class="certificate__details">
-                    <h4>${file}</h4>
-                    <p>Uploaded Certificate</p>
-                  </div>
-                </a>
-              </div>
-            `
-            )
-            .join("");
-        } catch (error) {
-          console.error(error);
-        }
-      }
-
-      loadCertificates();
-
-      // Scroll Reveal Animations
-      const scrollRevealOption = {
-        distance: "50px",
-        origin: "bottom",
-        duration: 1000,
-      };
-
-      ScrollReveal().reveal(".header__content h2", { ...scrollRevealOption });
-      ScrollReveal().reveal(".header__content .section__description", { ...scrollRevealOption, delay: 500 });
-      ScrollReveal().reveal(".header__content .header__btn", { ...scrollRevealOption, delay: 1000 });
-
-      ScrollReveal().reveal(".about__content .section__header", { ...scrollRevealOption });
-      ScrollReveal().reveal(".about__content .section__description", { ...scrollRevealOption, delay: 500 });
-      ScrollReveal().reveal(".about__content .about__btn", { ...scrollRevealOption, delay: 1000 });
-
-      ScrollReveal().reveal(".service__card", { ...scrollRevealOption, interval: 500 });
-
-      ScrollReveal().reveal(".portfolio__card", { duration: 1000, interval: 500 });
-    });
-  </script>
-  <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="main.js"></script>
 </body>
 </html>
