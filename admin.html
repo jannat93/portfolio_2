@@ -2,61 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Upload Certificate - Admin</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Upload Certificate</title>
   <style>
     body {
-      background: #fafafa;
-      font-family: 'Montserrat', sans-serif;
+      font-family: sans-serif;
       padding: 2rem;
-      color: #333;
+      background: #fafafa;
     }
     form {
-      max-width: 400px;
-      margin: auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 2rem;
     }
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: #e9615e;
-    }
-    input[type="file"] {
-      width: 100%;
-      margin-bottom: 1rem;
-    }
-    button {
-      width: 100%;
-      background: #e9615e;
-      color: white;
-      font-size: 1rem;
-      border: none;
-      padding: 0.75rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background: #ec9956;
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   </style>
 </head>
 <body>
   <h2>Upload New Certificate</h2>
   <form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="certificate" accept="image/*,application/pdf" required />
+    <input type="file" name="certificate" required />
     <button type="submit">Upload</button>
   </form>
 
   <script>
-    // OPTIONAL: Simple password prompt for admin access
     const secret = prompt("Enter admin password:");
-    if (secret !== "MY_SECRET_PASSWORD") {
-      alert("Unauthorized access");
+    if (!secret || secret.toLowerCase() !== "my_secret") {
+      alert("Unauthorized");
       window.location.href = "index.html";
     }
 
@@ -64,20 +36,23 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
+
       try {
         const res = await fetch("https://certificate-api-trqq.onrender.com/upload", {
           method: "POST",
           body: formData,
         });
+
         if (res.ok) {
           alert("Certificate uploaded successfully!");
           form.reset();
+          form.querySelector("button").disabled = true;
         } else {
-          alert("Upload failed.");
+          const errorText = await res.text();
+          alert("Upload failed: " + errorText);
         }
-      } catch (err) {
-        alert("Error uploading certificate.");
-        console.error(err);
+      } catch (error) {
+        alert("Upload error: " + error.message);
       }
     });
   </script>
